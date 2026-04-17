@@ -15,13 +15,6 @@ function Article({ article }) {
         }`}
       >
         <div className="col p-4 d-flex flex-column position-static">
-          <strong
-            className={`d-inline-block mb-2 ${
-              isDark ? "text-info" : "text-primary-emphasis"
-            }`}
-          >
-            AI
-          </strong>
           <h3 className={`mb-0 ${isDark ? "" : "title-light"} `}>
             {article.title.split(" ").slice(0, 4).join(" ")}...
           </h3>
@@ -29,8 +22,8 @@ function Article({ article }) {
           <p className="card-text prevText">
             {article.previewText.split(" ").slice(0, 18).join(" ")}...
           </p>
-          <NavLink to={`/Articles/${article._id}`}>
-            <button className="btn text-primary">Continue Reading</button>
+          <NavLink to={`/articles/${article._id}`}>
+            <button className="btn btn-primary">Continue Reading</button>
           </NavLink>
         </div>
 
@@ -39,9 +32,17 @@ function Article({ article }) {
             isDark ? "bg-light text-dark" : "bg-dark text-white"
           }`}
         >
-          <p className="image-text">
-            {article.keywords.split(" ").slice(0, 5).join(" ")}...
-          </p>
+          {article.image_url ? (
+            <img
+              src={article.image_url}
+              alt="graphics card image"
+              className="image-text"
+            />
+          ) : (
+            <p className="image-text">
+              {article.keywords.split(" ").slice(0, 5).join(" ")}...
+            </p>
+          )}
         </div>
       </div>
     </div>
